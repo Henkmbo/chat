@@ -1,0 +1,13 @@
+RewriteEngine on
+
+RewriteRule ^/?error_log$ - [F,L]
+
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteRule ^ajax/$ ajax.php [L]
+
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /index.php [L]
